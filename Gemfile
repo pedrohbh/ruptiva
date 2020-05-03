@@ -17,6 +17,7 @@ gem 'puma', '~> 4.1'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise_token_auth'
 gem 'pundit'
+gem 'paranoia'
 
 
 
