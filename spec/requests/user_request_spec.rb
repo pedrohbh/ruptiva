@@ -29,7 +29,7 @@ RSpec.describe "Users", type: :request do
       describe "GET /users" do
         describe "status 200" do
 
-          it "retorna todos os usuários cadstrados" do
+          it "retorna todos os usuários cadastrados" do
             auth_params = faz_login_de_usuario(@userA)
             get '/users', headers: auth_params
 
@@ -68,25 +68,14 @@ RSpec.describe "Users", type: :request do
       end
     end
 
-    context "quando o usuário é do tipo normal('user')" do
-      describe 'GET /users' do
-        describe "status 200" do
-          it 'impede de o usuário acessar esse tipo de informação pois não é admin' do
-            auth_params = faz_login_de_usuario(@userC)
 
-            get '/users', headers: auth_params
-            expect(response).not_to permit(@userC)
-          end
-        end
-      end
-
-    end
     describe 'DELETE /auth' do
       describe "status 200" do
         it "faz soft-delete do usuário após o mesmo ter logado" do
          auth_params = faz_login_de_usuario(@userB)
-          delete '/auth/', headers: auth_params
-          expect(response).to have_http_status(:success)
+         delete '/auth/', headers: auth_params
+
+         expect(response).to have_http_status(:success)
         end
       end
     end
