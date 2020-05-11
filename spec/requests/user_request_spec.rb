@@ -68,6 +68,18 @@ RSpec.describe "Users", type: :request do
         end
       end
     end
+
+    describe 'DELETE /auth' do
+      describe "status 200" do
+        it "faz soft-delete do usuário após o mesmo ter logado" do
+          login(@userB)
+          auth_params = get_auth_params_from_login_response_headers(response)
+
+          delete '/auth/', headers: auth_params
+          expect(response).to have_http_status(:success)
+        end
+      end
+    end
   end
 
   def login(user)
