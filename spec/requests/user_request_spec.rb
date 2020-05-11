@@ -1,6 +1,8 @@
 require 'rails_helper'
 include ActionController::RespondWith
 
+
+
 RSpec.describe "Users", type: :request do
   describe "Rotas: Users" do
     let!(:usuario) do
@@ -29,8 +31,7 @@ RSpec.describe "Users", type: :request do
       describe "status 200" do
 
         it "retorna todos os usuários cadstrados" do
-          login(@userA)
-          auth_params = get_auth_params_from_login_response_headers(response)
+          auth_params = faz_login_de_usuario(@userA)
           get '/users', headers: auth_params
 
           expect(response).to have_http_status(:success)
@@ -42,8 +43,7 @@ RSpec.describe "Users", type: :request do
     describe "GET /users/1" do
       describe "status 200" do
         it "retorna os dados do usuário Maikel" do
-          login(@userA)
-          auth_params = get_auth_params_from_login_response_headers(response)
+          auth_params = faz_login_de_usuario(@userA)
 
           get '/users/1', headers: auth_params
           expect(response).to have_http_status(:success)
@@ -57,8 +57,7 @@ RSpec.describe "Users", type: :request do
     describe 'GET /users/3' do
       describe "status 200" do
         it "retorna os dados da usuária Cátia" do
-          login(@userA)
-          auth_params = get_auth_params_from_login_response_headers(response)
+          auth_params = faz_login_de_usuario(@userA)
 
           get '/users/3', headers: auth_params
           expect(response).to have_http_status(:success)
@@ -72,14 +71,19 @@ RSpec.describe "Users", type: :request do
     describe 'DELETE /auth' do
       describe "status 200" do
         it "faz soft-delete do usuário após o mesmo ter logado" do
-          login(@userB)
-          auth_params = get_auth_params_from_login_response_headers(response)
+         auth_params = faz_login_de_usuario(@userB)
 
           delete '/auth/', headers: auth_params
           expect(response).to have_http_status(:success)
         end
       end
     end
+  end
+
+
+  def faz_login_de_usuario(user)
+    login(user)
+    auth_params = get_auth_params_from_login_response_headers(response)
   end
 
   def login(user)
