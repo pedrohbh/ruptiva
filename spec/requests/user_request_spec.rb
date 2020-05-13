@@ -29,7 +29,7 @@ RSpec.describe "Users", type: :request do
 
           put "/users/1"
           expect(response.status).to eq(401)
-          
+
         end
       end
     end
@@ -115,6 +115,15 @@ RSpec.describe "Users", type: :request do
          delete '/auth/', headers: auth_params
 
          expect(response).to have_http_status(:success)
+
+         @usuario_deletado = User.where(email: @userB.email)
+         expect(@usuario_deletado).not_to be_nil
+
+         auth_params = faz_login_de_usuario(@userA)
+         get '/users', headers: auth_params
+
+         expect(response).to have_http_status(:success)
+         expect(JSON.parse(response.body).size()).to eq(2)
         end
       end
     end
