@@ -9,7 +9,6 @@ RSpec.describe "Users", type: :request do
       @userC = create(:user, first_name: 'Cátia', last_name: 'Abreu', email: 'catia.abreu@ruptiva.com', role: :user)
     end
 
-    context "quando o usuário é do tipo 'ADMIN'" do
       describe "POST /auth" do
         describe "status 200" do
           it "cria um novo usuário" do
@@ -66,7 +65,7 @@ RSpec.describe "Users", type: :request do
           end
         end
       end
-    end
+
 
     describe 'PUT /users/3' do
       describe "status 204" do

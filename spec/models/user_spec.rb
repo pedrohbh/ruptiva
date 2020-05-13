@@ -5,9 +5,15 @@ RSpec.describe User, type: :model do
 
   subject { @user }
 
-  it { should respond_to(:email) }
+  it "usuário deve conter email e senha" do
+    @userB = User.new()
+    @userC = User.new(email: 'joaobosco@ruptiva.com')
+    @userD = User.new(password: 'joão')
+    @user.password = 'ilikeruptiva'
 
-  it "#email returns a string" do
-    expect(@user.email).to match 'usuario@ruptiva.com.br'
+    expect(@userB).not_to be_valid
+    expect(@userC).not_to be_valid
+    expect(@userD).not_to be_valid
+    expect(@user).to be_valid
   end
 end
