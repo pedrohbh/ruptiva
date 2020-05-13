@@ -13,12 +13,12 @@ class UsersController < ApplicationController
     authorize @user
     render json: @user
   end
-=begin
+
   def update
     @user = User.find(params[:id])
     authorize @user
     if @user.update(user_params)
-      render json: @user
+      render status: 204
     else
       render json: @user.errors, status: 412
     end
@@ -26,8 +26,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).
-        permit(:first_name, :last_name, :password, :password_confirmation)
+    params.permit(:first_name, :last_name, :password, :password_confirmation)
   end
-=end
+
 end

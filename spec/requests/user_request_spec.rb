@@ -68,6 +68,21 @@ RSpec.describe "Users", type: :request do
       end
     end
 
+    describe 'PUT /users/3' do
+      describe "status 204" do
+        it "atualiza os dados do usuário" do
+          auth_params = faz_login_de_usuario(@userC)
+
+          put '/users/3', headers: auth_params, params: { 'first_name': 'Theobaldo', 'last_name': 'Vasconcelos'}
+          expect(response).to have_http_status(204)
+
+          get '/users/3', headers: auth_params
+          expect(JSON.parse(response.body)['first_name']).to eql("Theobaldo")
+          expect(JSON.parse(response.body)['last_name']).to eql("Vasconcelos")
+        end
+      end
+    end
+
 
     describe 'DELETE /auth' do
       describe "status 200" do
