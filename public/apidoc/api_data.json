@@ -159,6 +159,24 @@
       ]
     },
     "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>Status referente a execução da operação</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Mensagem referente a execução da operação</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Sucesso",

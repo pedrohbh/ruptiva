@@ -261,6 +261,8 @@ HTTP/1.1 200 OK
     "client":       "xxxxx",
     "uid":          "zzzzz"
 }
+@apiSuccess {String} status Status referente a execução da operação
+@apiSuccess {String} message Mensagem referente a execução da operação
 @apiSuccessExample {json} Sucesso
 HTTP/1.1 200 OK
 {

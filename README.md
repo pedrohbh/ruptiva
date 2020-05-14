@@ -51,3 +51,6 @@ Caso deseje que o resultado dos testes sejam apresentados com a descriçao de ca
 ```
 rspec --format d
 ```
+
+### Acesso a documentação da api
+A documentação da api se encontra no arquivo public/apidoc/index.html. Abra-o com o navegador Firefox ou Google Chrome.
