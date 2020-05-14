@@ -314,5 +314,106 @@ define({ "api": [
     "filename": "app/controllers/users_controller.rb",
     "groupTitle": "Usuários",
     "name": "GetUsersId"
+  },
+  {
+    "type": "put",
+    "url": "/users/:id",
+    "title": "Atualiza um usuário",
+    "group": "Usuários",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "access-token",
+            "description": "<p>Token de usuário</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token-type",
+            "description": "<p>Tipo de token de usuário</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "client",
+            "description": "<p>Token de cliente</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "expiry",
+            "description": "<p>Data na qual a sessão de usário expirará</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "uid",
+            "description": "<p>Identificador único de usuário</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header",
+          "content": "{\n    \"access-token\": \"wwwww\",\n    \"token-type\":   \"Bearer\",\n    \"client\":       \"xxxxx\",\n    \"expiry\":       \"yyyyy\",\n    \"uid\":          \"zzzzz\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "id",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Id do usuário</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "first_name",
+            "description": "<p>Nome</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "last_name",
+            "description": "<p>Sobrenome</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Entrada",
+          "content": "{\n        \"first_name\": \"Maikel\",\n        \"last_name\": \"Bald\",\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Sucesso",
+          "content": "HTTP/1.1 204 No Content",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controllers/users_controller.rb",
+    "groupTitle": "Usuários",
+    "name": "PutUsersId"
   }
 ] });

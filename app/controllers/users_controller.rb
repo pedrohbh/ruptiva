@@ -117,6 +117,33 @@ HTTP/1.1 200 OK
     render json: @user
   end
 
+=begin
+@api {put} /users/:id Atualiza um usuário
+@apiGroup Usuários
+@apiHeader {String} access-token Token de usuário
+@apiHeader {String} token-type Tipo de token de usuário
+@apiHeader {String} client Token de cliente
+@apiHeader {String} expiry Data na qual a sessão de usário expirará
+@apiHeader {String} uid Identificador único de usuário
+@apiHeaderExample {json} Header
+{
+    "access-token": "wwwww",
+    "token-type":   "Bearer",
+    "client":       "xxxxx",
+    "expiry":       "yyyyy",
+    "uid":          "zzzzz"
+}
+@apiParam {id} id Id do usuário
+@apiParam {String} first_name Nome
+@apiParam {String} last_name Sobrenome
+@apiParamExample {json} Entrada
+{
+        "first_name": "Maikel",
+        "last_name": "Bald",
+}
+@apiSuccessExample {json} Sucesso
+    HTTP/1.1 204 No Content
+=end
   def update
     @user = User.find(params[:id])
     authorize @user
@@ -129,7 +156,7 @@ HTTP/1.1 200 OK
 
   private
   def user_params
-    params.permit(:first_name, :last_name, :password, :password_confirmation)
+    params.permit(:first_name, :last_name )
   end
 
 end
