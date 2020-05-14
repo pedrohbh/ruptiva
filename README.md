@@ -31,23 +31,23 @@ bundle install
 rake db:migrate
 ```
 
-4 - Execute a semeação de dados
+4 - Execute a semeação de dados;
 ```
 rails db:seed
 ```
 
-5 - Execute o servidor
+5 - Execute o servidor.
 ```
 rails server
 ```
 
 ### Execução de testes unitários
-Para executar os testes unitários, execute na raíz do projeto
+Para executar os testes unitários, execute na raíz do projeto:
 ```
 bundle exec rspec
 ```
 
-Caso deseje que o resultado dos testes sejam apresentados com a descriçao de cada, execute na raíz do projeto
+Caso deseje que o resultado dos testes sejam apresentados com a descriçao de cada, execute na raíz do projeto:
 ```
 rspec --format d
 ```
