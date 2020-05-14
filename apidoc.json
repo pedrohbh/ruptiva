@@ -1,0 +1,9 @@
+{
+  "name": "Documentação - API Ruptiva",
+  "version": "1.0.0",
+  "description": "API de cadastros de usuários",
+  "title": "Documentação - API Ruptiva",
+  "template": {
+    "forceLanguage": "pt_br"
+  }
+}
