@@ -66,6 +66,46 @@ HTTP/1.1 200 OK
     render json: @user
   end
 
+
+=begin
+@api {get} /users/:id Exibe uma tarefa
+@apiGroup Usuários
+@apiHeader {String} access-token Token de usuário
+@apiHeader {String} token-type Tipo de token de usuário
+@apiHeader {String} client Token de cliente
+@apiHeader {String} expiry Data na qual a sessão de usário expirará
+@apiHeader {String} uid Identificador único de usuário
+@apiHeaderExample {json} Header
+  {
+    "access-token": "wwwww",
+    "token-type":   "Bearer",
+    "client":       "xxxxx",
+    "expiry":       "yyyyy",
+    "uid":          "zzzzz"
+  }
+@apiParam {id} id Id da tarefa
+@apiSuccess {Number} id Id de registro
+@apiSuccess {String} title Título da tarefa
+@apiSuccess {Boolean} done Tarefa foi concluída?
+@apiSuccess {Date} updated_at Data de atualização
+@apiSuccess {Date} created_at Data de cadastro
+@apiSuccess {Number} user_id Id do usuário
+@apiSuccessExample {json} Sucesso
+ HTTP/1.1 200 OK
+  {
+        "id": 1,
+        "provider": "email",
+        "uid": "Maikel",
+        "allow_password_change": false,
+        "first_name": "Maikel",
+        "last_name": "Bald",
+        "email": "maikel@ruptiva.com",
+        "created_at": "2020-05-12T14:19:49.192Z",
+        "updated_at": "2020-05-12T14:21:39.531Z",
+        "deleted_at": null,
+        "role": "admin"
+    }
+=end
   def show
     @user = User.find(params[:id])
     authorize @user
