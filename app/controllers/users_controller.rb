@@ -246,4 +246,26 @@ HTTP/1.1 200 OK
     }
 } 
 =end
+
+
+# Exclusão de usuário
+=begin
+@api {delete} /auth Exclui um usuário
+@apiGroup Usuário
+@apiHeader {String} access-token Token de usuário
+@apiHeader {String} client Token de cliente
+@apiHeader {String} uid Identificador único de usuário
+@apiHeaderExample {json} Header
+{
+    "access-token": "wwwww",
+    "client":       "xxxxx",
+    "uid":          "zzzzz"
+}
+@apiSuccessExample {json} Sucesso
+HTTP/1.1 200 OK
+{
+    "status": "success",
+    "message": "Account with UID 'joao@email.com' has been destroyed."
+}
+=end
 end

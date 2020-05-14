@@ -120,6 +120,59 @@ define({ "api": [
     "name": "PostAuthSign_in"
   },
   {
+    "type": "delete",
+    "url": "/auth",
+    "title": "Exclui um usuário",
+    "group": "Usuário",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "access-token",
+            "description": "<p>Token de usuário</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "client",
+            "description": "<p>Token de cliente</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "uid",
+            "description": "<p>Identificador único de usuário</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header",
+          "content": "{\n    \"access-token\": \"wwwww\",\n    \"client\":       \"xxxxx\",\n    \"uid\":          \"zzzzz\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Sucesso",
+          "content": "HTTP/1.1 200 OK\n{\n    \"status\": \"success\",\n    \"message\": \"Account with UID 'joao@email.com' has been destroyed.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controllers/users_controller.rb",
+    "groupTitle": "Usuário",
+    "name": "DeleteAuth"
+  },
+  {
     "type": "get",
     "url": "/users",
     "title": "Lista Usuários Cadastrados",
