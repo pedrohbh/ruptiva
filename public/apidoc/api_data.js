@@ -20,13 +20,34 @@ define({ "api": [
             "optional": false,
             "field": "token-type",
             "description": "<p>Tipo de token de usuário</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "client",
+            "description": "<p>Token de cliente</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "expiry",
+            "description": "<p>Data na qual a sessão de usário expirará</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "uid",
+            "description": "<p>Identificador único de usuário</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Header",
-          "content": "{\"Authorization\": \"JWT xyz.abc.123.hgf\"}",
+          "content": "{\n  \"access-token\": \"wwwww\",\n  \"token-type\":   \"Bearer\",\n  \"client\":       \"xxxxx\",\n  \"expiry\":       \"yyyyy\",\n  \"uid\":          \"zzzzz\"\n}",
           "type": "json"
         }
       ]
@@ -85,6 +106,13 @@ define({ "api": [
           },
           {
             "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "users.email",
+            "description": "<p>Email</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "Date",
             "optional": false,
             "field": "users.created_at",
@@ -109,7 +137,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "users.role",
-            "description": "<p>Id do usuário</p>"
+            "description": "<p>Nível de acesso do usuário</p>"
           }
         ]
       },

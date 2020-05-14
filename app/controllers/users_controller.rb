@@ -7,8 +7,17 @@ class UsersController < ApplicationController
 @apiGroup Usuários
 @apiHeader {String} access-token Token de usuário
 @apiHeader {String} token-type Tipo de token de usuário
+@apiHeader {String} client Token de cliente
+@apiHeader {String} expiry Data na qual a sessão de usário expirará
+@apiHeader {String} uid Identificador único de usuário
 @apiHeaderExample {json} Header
-  {"Authorization": "JWT xyz.abc.123.hgf"}
+  {
+    "access-token": "wwwww",
+    "token-type":   "Bearer",
+    "client":       "xxxxx",
+    "expiry":       "yyyyy",
+    "uid":          "zzzzz"
+  }
 @apiSuccess {Object[]} users Lista de usuários registrados
 @apiSuccess {Number} users.id Id de registro
 @apiSuccess {String} users.provider Tipo de autenticação
@@ -16,10 +25,11 @@ class UsersController < ApplicationController
 @apiSuccess {Boolean} users.allow_password_change Permite mudar senha?
 @apiSuccess {String} users.first_name Nome
 @apiSuccess {String} users.last_name Sobrenome
+@apiSuccess {String} users.email Email
 @apiSuccess {Date} users.created_at Data de cadastro
 @apiSuccess {Date} users.updated_at Última data de atualização
 @apiSuccess {Date} users.deleted_at Data de exclusão
-@apiSuccess {String} users.role Id do usuário
+@apiSuccess {String} users.role Nível de acesso do usuário
 @apiSuccessExample {json} Sucesso
 HTTP/1.1 200 OK
   [
