@@ -1,5 +1,125 @@
 [
   {
+    "type": "post",
+    "url": "/auth/sign_in",
+    "title": "Login de sessão",
+    "group": "Credencial",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email de usuário</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Senha de usuário</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Entrada",
+          "content": "{\n    \"email\": \"joao@email.com\",\n    \"password\": \"12345678\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": "<p>Dados cadastrados</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "data.id",
+            "description": "<p>Id de registro</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.email",
+            "description": "<p>Email</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.provider",
+            "description": "<p>Tipo de autenticação</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.uid",
+            "description": "<p>Identificador único</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "data.allow_password_change",
+            "description": "<p>Permite mudar senha?</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.first_name",
+            "description": "<p>Nome</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.last_name",
+            "description": "<p>Sobrenome</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "data.deleted_at",
+            "description": "<p>Data de exclusão</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.role",
+            "description": "<p>Nível de acesso do usuário</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Sucesso",
+          "content": "HTTP/1.1 200 OK\n{\n    \"data\": {\n        \"id\": 2,\n        \"email\": \"joao@email.com\",\n        \"provider\": \"email\",\n        \"uid\": \"joao@email.com\",\n        \"allow_password_change\": false,\n        \"first_name\": \"João\",\n        \"last_name\": \"da Silva\",\n        \"deleted_at\": null,\n        \"role\": \"user\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controllers/users_controller.rb",
+    "groupTitle": "Credencial",
+    "name": "PostAuthSign_in"
+  },
+  {
     "type": "get",
     "url": "/users",
     "title": "Lista Usuários Cadastrados",

@@ -160,6 +160,7 @@ HTTP/1.1 200 OK
   end
 
 # Escrita das rotas de autenticação
+# Criar conta
 =begin
 @api {post} /auth Cria uma conta de acesso
 @apiGroup Usuário
@@ -208,4 +209,41 @@ HTTP/1.1 200 OK
 }
 =end
 
+# Autenticação de usuário
+=begin
+@api {post} /auth/sign_in Login de sessão
+@apiGroup Credencial
+@apiParam {String} email Email de usuário
+@apiParam {String} password Senha de usuário
+@apiParamExample {json} Entrada
+{
+    "email": "joao@email.com",
+    "password": "12345678"
+}   
+@apiSuccess {Object} data Dados cadastrados
+@apiSuccess {Number} data.id Id de registro
+@apiSuccess {String} data.email Email
+@apiSuccess {String} data.provider Tipo de autenticação
+@apiSuccess {String} data.uid Identificador único
+@apiSuccess {Boolean} data.allow_password_change Permite mudar senha?
+@apiSuccess {String} data.first_name Nome
+@apiSuccess {String} data.last_name Sobrenome
+@apiSuccess {Date} data.deleted_at Data de exclusão
+@apiSuccess {String} data.role Nível de acesso do usuário
+@apiSuccessExample {json} Sucesso
+HTTP/1.1 200 OK
+{
+    "data": {
+        "id": 2,
+        "email": "joao@email.com",
+        "provider": "email",
+        "uid": "joao@email.com",
+        "allow_password_change": false,
+        "first_name": "João",
+        "last_name": "da Silva",
+        "deleted_at": null,
+        "role": "user"
+    }
+} 
+=end
 end
