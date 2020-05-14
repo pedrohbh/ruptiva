@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 =begin
 @api {get} /users Lista Usuários Cadastrados
-@apiGroup Usuários
+@apiGroup Usuário
 @apiHeader {String} access-token Token de usuário
 @apiHeader {String} token-type Tipo de token de usuário
 @apiHeader {String} client Token de cliente
@@ -69,7 +69,7 @@ HTTP/1.1 200 OK
 
 =begin
 @api {get} /users/:id Exibe um usuário
-@apiGroup Usuários
+@apiGroup Usuário
 @apiHeader {String} access-token Token de usuário
 @apiHeader {String} token-type Tipo de token de usuário
 @apiHeader {String} client Token de cliente
@@ -83,7 +83,7 @@ HTTP/1.1 200 OK
     "expiry":       "yyyyy",
     "uid":          "zzzzz"
   }
-@apiParam {id} id Id do usuário
+@apiParam {Number} id Id do usuário
 @apiSuccess {Number} id Id de registro
 @apiSuccess {String} provider Tipo de autenticação
 @apiSuccess {String} uid Identificador único
@@ -119,7 +119,7 @@ HTTP/1.1 200 OK
 
 =begin
 @api {put} /users/:id Atualiza um usuário
-@apiGroup Usuários
+@apiGroup Usuário
 @apiHeader {String} access-token Token de usuário
 @apiHeader {String} token-type Tipo de token de usuário
 @apiHeader {String} client Token de cliente
@@ -133,7 +133,7 @@ HTTP/1.1 200 OK
     "expiry":       "yyyyy",
     "uid":          "zzzzz"
 }
-@apiParam {id} id Id do usuário
+@apiParam {Number} id Id do usuário
 @apiParam {String} first_name Nome
 @apiParam {String} last_name Sobrenome
 @apiParamExample {json} Entrada
@@ -158,5 +158,54 @@ HTTP/1.1 200 OK
   def user_params
     params.permit(:first_name, :last_name )
   end
+
+# Escrita das rotas de autenticação
+=begin
+@api {post} /auth Cria uma conta de acesso
+@apiGroup Usuário
+@apiParam {String} first_name Nome
+@apiParam {String} last_name Sobrenome
+@apiParam {String} email Email
+@apiParam {String} password Senha
+@apiParam {String} password_confirmation Confirmação da senha
+@apiParamExample {json} Entrada
+{
+  "first_name": "João",
+  "last_name": "da Silva",
+  "email": "joao@email.com",
+  "password": "12345678",
+  "password_confirmation": "12345678"
+}
+@apiSuccess {String} status Status da operação de criação de conta
+@apiSuccess {Object} data Dados cadastrados
+@apiSuccess {String} data.uid Identificador único
+@apiSuccess {Number} data.id Id de registro
+@apiSuccess {Boolean} data.allow_password_change Permite mudar senha?
+@apiSuccess {String} data.first_name Nome
+@apiSuccess {String} data.last_name Sobrenome
+@apiSuccess {String} data.email Email
+@apiSuccess {Date} data.created_at Data de cadastro
+@apiSuccess {Date} data.updated_at Última data de atualização
+@apiSuccess {Date} data.deleted_at Data de exclusão
+@apiSuccess {String} data.role Nível de acesso do usuário
+@apiSuccessExample {json} Sucesso
+HTTP/1.1 200 OK
+{
+    "status": "success",
+    "data": {
+        "uid": "joao@email.com",
+        "id": 2,
+        "email": "joao@email.com",
+        "provider": "email",
+        "allow_password_change": false,
+        "first_name": "João",
+        "last_name": "da Silva",
+        "created_at": "2020-05-14T17:57:39.061Z",
+        "updated_at": "2020-05-14T17:57:39.207Z",
+        "deleted_at": null,
+        "role": "user"
+    }
+}
+=end
 
 end
