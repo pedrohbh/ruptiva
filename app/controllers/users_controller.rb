@@ -68,7 +68,7 @@ HTTP/1.1 200 OK
 
 
 =begin
-@api {get} /users/:id Exibe uma tarefa
+@api {get} /users/:id Exibe um usuário
 @apiGroup Usuários
 @apiHeader {String} access-token Token de usuário
 @apiHeader {String} token-type Tipo de token de usuário
@@ -83,13 +83,18 @@ HTTP/1.1 200 OK
     "expiry":       "yyyyy",
     "uid":          "zzzzz"
   }
-@apiParam {id} id Id da tarefa
+@apiParam {id} id Id do usuário
 @apiSuccess {Number} id Id de registro
-@apiSuccess {String} title Título da tarefa
-@apiSuccess {Boolean} done Tarefa foi concluída?
-@apiSuccess {Date} updated_at Data de atualização
+@apiSuccess {String} provider Tipo de autenticação
+@apiSuccess {String} uid Identificador único
+@apiSuccess {Boolean} allow_password_change Permite mudar senha?
+@apiSuccess {String} first_name Nome
+@apiSuccess {String} last_name Sobrenome
+@apiSuccess {String} email Email
 @apiSuccess {Date} created_at Data de cadastro
-@apiSuccess {Number} user_id Id do usuário
+@apiSuccess {Date} updated_at Última data de atualização
+@apiSuccess {Date} deleted_at Data de exclusão
+@apiSuccess {String} role Nível de acesso do usuário
 @apiSuccessExample {json} Sucesso
  HTTP/1.1 200 OK
   {
